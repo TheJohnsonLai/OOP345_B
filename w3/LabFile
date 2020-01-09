@@ -1,0 +1,121 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+template <typename T>
+class X {
+	size_t s = 0;
+	T* b = nullptr;
+	
+	public:
+	
+	X() // CONSTRUCTS SAFE NULL
+	: s(0), b(nullptr)
+	{
+		cout << "X() ctor\n";
+	}
+
+	// CONSTRUCTS WITH DATA GIVEN
+	X(size_t size)
+	: s(size), b(new T[s]){
+		cout << "X(" << s << ") ctor\n";
+	}
+	
+	~X() // DESTRUCTOR
+	{
+		delete [] b;
+		cout << "-X(" << s << ") dtor\n";
+
+
+	}
+	// Assignment operator ( = )
+	X& operator=(const X& rhs){
+		if(this != rhs){
+			// Delete brains
+			delete [] b;
+			// Turn self into zombie
+			b = nullptr;
+			s = 0;
+			if (rhs.b){ // RHS has brains, steal them
+				s = rhs.s; // Set S SIZE
+				b =  new T[s}; // MAKE SPACE FOR MEMORY
+				memcpy(b, rhs.b, s*sizeof(T)); // DEEP COPY
+				// Equivalent is this -- copying array B for memory
+				// for (size_t i = 0; i < s; i ++){
+				//	b[i] = rhs.b[i];
+				// }
+			}
+		}else{
+			cout << "copy assignment operator: self assignment (ignored)\n";
+		}
+		return *this;
+	}
+
+	X(const X& rhs) // Copy Constructor BLAH(BLEH)
+	{
+		*this = rhs; // make assignment operator do dirty work
+	}
+
+	// ADADADAD /////////////// RULE OF 5 //// B E L O W /////////////////SASDSDAASDDASASDDSA
+	 // MOVE Assignment operator
+        X&& operator=(X&& rhs){ // && means take RIGHT HAND
+                if(this != &rhs){
+                        // Delete brains
+                        delete [] b;
+                        // Turn rhs into zombie
+                        s = rhs.s; // Steal brain from rhs
+                        b = rhs.b; //     
+                        rhs.b = nullptr; // turn rhs into zombie (transfer it)
+                        rhs.s = 0;
+                }else{
+                        cout << "Move assignment operator: self assignment (ignored)\n";
+                }
+                return std::move(*this);
+        }
+
+        X(X&& rhs) // Move Constructor
+        {
+                *this = rhs; // make assignment operator do dirty work
+        }
+///////// RULE OF 5/////////////
+
+	void print(){
+		cout << (void*) this << ", b=" << (void*) b << ", s=" << s << " \n";
+	}
+
+
+}
+
+int main() {
+	X<double> x1, x2(1000*1000), x3(100*1000*1000);
+	cout << "x1 ->"; x1.print();
+	cout << "x2 ->"; x2.print();
+	cout << "x3 ->"; x3.print();
+
+	x1 = x1; // Self assignment
+	cout << "x1 ->": x1.print();
+	x1 = x3; // Assignment operator
+	cout << "x3 ->": x3.print();
+	
+	X<double> x4(x1); // Copy assignment	
+        cout << "x1 ->"; x1.print();
+        cout << "x4 ->"; x4.print();
+
+	X<double> x5 = x1; // Assignment
+        cout << "x1 ->"; x1.print();
+        cout << "x5 ->"; x5.print(); 
+
+	x1 = std::move(x3); // x1 steals x3 brains, x3 now ded boye
+	cout << "x1 ->"; x1.print();
+        cout << "x3 ->"; x3.print();
+
+	x3 = std::move(x1); // Give me my brains back -> from X1 to X3
+        cout << "x1 ->"; x1.print();
+        cout << "x3 ->"; x3.print();
+	// Moves are INSTANT -> redirects POINTER
+	// Copy are SLOW -> Bit by Bit transfer
+	
+	X<double> x6 = std::move(x3); // Give brains to x6 MOVE CTOR
+	
+
+}

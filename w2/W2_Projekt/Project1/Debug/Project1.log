@@ -1,0 +1,10 @@
+﻿  w2.cpp
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\w2\stations.h(33): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\w2\stations.h(49): warning C4018: '>': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\w2\stations.h(55): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\w2\stations.h(81): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\w2\stations.h(200): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\w2\stations.h(212): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\w2\stations.h(218): warning C4018: '>=': signed/unsigned mismatch
+  Project1.vcxproj -> C:\Users\Johnson Lai\Desktop\Seneca\S3\OOP345_B\w2\W2_Projekt\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\Johnson Lai\Desktop\Seneca\S3\OOP345_B\w2\W2_Projekt\Debug\Project1.pdb (Partial PDB)

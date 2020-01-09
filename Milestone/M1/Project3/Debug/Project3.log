@@ -1,0 +1,7 @@
+﻿  CustomerOrder.cpp
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\milestone\m1\project3\customerorder.cpp(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\milestone\m1\project3\customerorder.cpp(102): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\milestone\m1\project3\customerorder.cpp(111): warning C4018: '<': signed/unsigned mismatch
+c:\users\johnson lai\desktop\seneca\s3\oop345_b\milestone\m1\project3\customerorder.cpp(125): warning C4018: '<': signed/unsigned mismatch
+  Project3.vcxproj -> C:\Users\Johnson Lai\Desktop\Seneca\S3\OOP345_B\Milestone\M1\Debug\Project3.exe
+  Project3.vcxproj -> C:\Users\Johnson Lai\Desktop\Seneca\S3\OOP345_B\Milestone\M1\Debug\Project3.pdb (Partial PDB)
